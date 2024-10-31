@@ -7,7 +7,6 @@ export const options = {
   duration: '30s',
 };
 
-
 export default function() {
   postLogin();
   sleep(1);
