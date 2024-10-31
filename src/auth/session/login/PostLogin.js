@@ -22,5 +22,8 @@ export function postLogin () {
     'response time is less than 2s': (r) => r.timings.duration < 2000,
     'response time is less than 5s': (r) => r.timings.duration < 5000,
     'response time is less than 10s': (r) => r.timings.duration < 10000,
+    'content-type is json': (r) => r.headers['Content-Type'] === 'application/json',
+    'response has auth token': (r) => r.json('token') !== undefined || fail("Token tidak ditemukan!"),
+    'success message is present': (r) => r.json('message') === 'Berhasil login' || fail("Pesan sukses tidak ada!")
   });
 }

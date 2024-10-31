@@ -19,7 +19,7 @@ export const options = {
   //   projectID: "",
   //   // The name of the test in the k6 Cloud UI.
   //   // Test runs with the same name will be grouped.
-  //   name: "Load.js"
+  //   name: "PostCreate.js"
   // },
 
   // Uncomment this section to enable the use of Browser API in your tests.
