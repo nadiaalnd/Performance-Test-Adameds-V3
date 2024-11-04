@@ -7,24 +7,30 @@ const ENDPOINTS = {
 
 const headers = {
   'Content-Type': 'application/json',
-  'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXIgYWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluQGdtYWlsLmNvbSIsImZhc2tlc1V1aWQiOm51bGwsImlhdCI6MTczMDcxMDAzMCwiZXhwIjoxNzMwNzIwODMwLCJpc3MiOiJhdXRoZW50aWNhdGlvbi1zZXJpdmljZSJ9.rU04V6eZFu_m623btT9F5FG_S8suI6TXLr9WGcThnGYV1VvFmhFHhFQhOv9ZF6GYLzOG7oTLA14RPQhKsjJ1XrP-NEh3PJ3Eg1sJJMLHOfEQQQnlIYNvuzNOklAk298Ze4VodpJMRFn5biAfHrZBfc48AokpK5bm7Q37LnGNFbKMdSQL9JHvwsy36B41M8c_9XUTp3ElojBGkSFQRCdd-AUaOKWyoBTUjW8j3VR2NCg4GY-Z1W6t6SRPppC6YH0JjgZ9FK2UYSniBI8luZIbodqweG-FVgZ1l5AKLFPV3kDYrP31yyavdfSOZUrQEhueQ03wvWoBUOLBKongupzmCw'
+  'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXIgYWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluQGdtYWlsLmNvbSIsImZhc2tlc1V1aWQiOm51bGwsImlhdCI6MTczMDc2MTI5MywiZXhwIjoxNzMwNzcyMDkzLCJpc3MiOiJhdXRoZW50aWNhdGlvbi1zZXJpdmljZSJ9.AeBwE2U0ZQ3YXeThbZWu-bPso2o7MI6_Oh9yjmS4mlihRbjCg8FECciswXEMsde6tgnnU9EtI-wpVleUXxD5qyvgoD73XXwsyfRmn32mp_pPC0aUcA8gFfC7vv31ieqOzdtXMaG9_gG_vNnnz-s1tTaQC2a1SdYAZ43shKs8iUQX3dzFjA_rMYB4EiPPw2XDErK16Y-QxBCzskQ7Iqd3m2pnSOmEWjsM99IJfFaKvND3DCZnJtM3qIWzIrl3-OZGAKwG0pUzX2zdGpMJ4VSpfb_iy77W4qA0fvGEjjs-Nfs4dJMSWQ7AWjrMluXfjRs5KodndQ79O7gqL_Jbm1Tolw'
 };
 
-// Request Body
-const post_body = {
-    "code": "nana-09",
-    "name": "naninuneno",
-    "status": true
-};
+// Fungsi untuk membuat kode unik
+function generateUniqueCode() {
+    return `icd9-${Math.floor(Math.random() * 100000)}`;
+  }
 
+// Request Body 
 export function postICD9() {
+  const uniqueCode = generateUniqueCode();
+  const post_body = { 
+      "code": uniqueCode,
+      "name": "bunga",
+      "status": true
+  };
+
   const regisUrl = ENDPOINTS.create_icd9;
   const regisRequestBody = JSON.stringify(post_body);
 
   const regisResponse = http.post(regisUrl, regisRequestBody, { headers });
   
-  // console.log('Status:', regisResponse.status);
-  // console.log('Response body:', regisResponse.body);
+//   console.log('Status:', regisResponse.status);
+//   console.log('Response body:', regisResponse.body);
 
   check(regisResponse, {
     'status is 201': (r) => r.status === 201,
@@ -35,4 +41,6 @@ export function postICD9() {
     'response time is less than 5s': (r) => r.timings.duration < 5000,
     'response time is less than 10s': (r) => r.timings.duration < 10000,
   });
+
+  sleep(1); // Jeda antar request
 }
