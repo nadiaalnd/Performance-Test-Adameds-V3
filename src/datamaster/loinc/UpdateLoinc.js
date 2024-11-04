@@ -2,7 +2,7 @@ import http from 'k6/http';
 import { check, sleep } from 'k6';
 
 const ENDPOINTS = {
-  put_icd9: 'http://18.142.73.75:5000/api/v3/datamaster/icd9/0192f688-9306-7156-87aa-b8786a22f964',
+  put_loinc: 'http://18.142.73.75:5000/api/v3/datamaster/loinc/0192f688-9306-7156-87aa-b8786a22f964',
 };
 
 const headers = {
@@ -12,13 +12,13 @@ const headers = {
 
 // Request Body
 const put_body = {
-    "code": "ICD9-01",
-    "name": "zahro naninuneno",
+    "code": "LOINC-01",
+    "name": "zahro",
     "status": true
 };
 
-export function putICD9() {
-  const regisUrl = ENDPOINTS.put_icd9;
+export function putLOINC() {
+  const regisUrl = ENDPOINTS.put_loinc;
   const regisRequestBody = JSON.stringify(put_body);
 
   const regisResponse = http.put(regisUrl, regisRequestBody, { headers });

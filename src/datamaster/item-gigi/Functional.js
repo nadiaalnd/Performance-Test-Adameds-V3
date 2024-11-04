@@ -1,5 +1,5 @@
 import {sleep} from "k6";
-import {postLogin} from "./GetKabupaten";
+import {postItemGigi} from "./PostItemGigi.js";
 
 
 export const options = {
@@ -8,6 +8,6 @@ export const options = {
 };
 
 export default function() {
-  postLogin();
+  postItemGigi();
   sleep(1);
 }

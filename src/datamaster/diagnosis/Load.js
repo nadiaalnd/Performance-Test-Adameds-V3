@@ -1,5 +1,5 @@
 import { sleep } from "k6";
-import { getICD9 } from "./GetICD9.js";
+import { getKabupaten } from "./GetKabupaten.js";
 
 export const options = {
   stages: [
@@ -15,7 +15,7 @@ export const options = {
 };
 
 export default function() {
-  getICD9();
+  getKabupaten();
   sleep(1);
 
 }

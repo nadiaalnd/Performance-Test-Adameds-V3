@@ -1,5 +1,5 @@
 import {sleep} from "k6";
-import {getICD9} from "./GetICD9.js";
+import {postICD9} from "./PostICD9.js";
 
 
 export const options = {
@@ -8,6 +8,6 @@ export const options = {
 };
 
 export default function() {
-  getICD9 ();
+  postICD9 ();
   sleep(1);
 }

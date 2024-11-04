@@ -2,7 +2,7 @@ import http from 'k6/http';
 import { check, sleep } from 'k6';
 
 const ENDPOINTS = {
-  import_icd9: 'http://18.142.73.75:5000/api/v3/datamaster/icd9/import', // Sesuaikan dengan endpoint import
+  import_kecamatan: 'http://18.142.73.75:5000/api/v3/datamaster/kecamatan/import', // Sesuaikan dengan endpoint import
 };
 
 const headers = {
@@ -10,8 +10,8 @@ const headers = {
   'Authorization' : 'Baerer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXIgYWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluQGdtYWlsLmNvbSIsImZhc2tlc1V1aWQiOm51bGwsImlhdCI6MTczMDcwNzc5MCwiZXhwIjoxNzMwNzE4NTkwLCJpc3MiOiJhdXRoZW50aWNhdGlvbi1zZXJpdmljZSJ9.uuy6sGfYft5-qciTXQQmQ9g7cy-d2SiWYJYF1iNjZLHOGJTgbt--DDmUWd05_krLOAZNl3QV7EIUS1jhOe9NJF8T5oB6vX35DseIiRqgAVf3aI8Fe9oo70PnOb61pqOxTosHwc146HwBV9grrmfjKd3-wbCE9_zJjw4vopow_XI3lIlOsr8DnHRey8zPB_W46lHQ25K2f2Z1G9XNl2FvQhekD4I2bB84Ac1bLLgeRM5KPFh4jOi5GBk2mA9lH_nWikInvAPf5pv1sWcrLVPTJ38EMLXAFAjFcxXZiFvUXvcZkrmUnh0jQLHPAI34l08o997xXXgwsEWbwjSifyv7Ow'
 };
 
-export function importICD9() {
-  const regisUrl = `${ENDPOINTS.import_icd9}`;
+export function importKABUPATEN() {
+  const regisUrl = `${ENDPOINTS.import_kecamatan}`;
 
   const regisResponse = http.post(regisUrl, { headers });
   check(regisResponse, {

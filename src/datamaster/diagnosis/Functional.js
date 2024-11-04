@@ -1,5 +1,5 @@
 import {sleep} from "k6";
-import {getKabupaten} from "./GetKabupaten.js";
+import {postLogin} from "./GetKabupaten";
 
 
 export const options = {
@@ -8,6 +8,6 @@ export const options = {
 };
 
 export default function() {
-  getKabupaten();
+  postLogin();
   sleep(1);
 }
