@@ -1,59 +1,64 @@
 import http from 'k6/http';
-import { sleep } from 'k6';
+import {check, fail} from 'k6';
+import {ACCESS_TOKEN, ACCESS_TOKEN_PP, BASE_URL, HOST_ADMISI, HOST_ADMISI_PP} from "../../../../config/config.js";
 
-export const options = {
-  // A number specifying the number of VUs to run concurrently.
-  vus: 10,
-  // A string specifying the total duration of the test run.
-  duration: '30s',
+export function registerRajal() {
+  const url = `${HOST_ADMISI}/rawat-jalan`;
+  const body = {
+    "patient_data": {
+      "title": "Mr.",
+      "name": "John Doe",
+      "identity": "KTP",
+      "no_identity": "Aa23"+Math.random(),
+      "birth_detail": {
+        "birth_place": "Jakarta",
+        "birth_date": "1990-01-01"
+      },
+      "gender": "Male",
+      "phone": "+621234567890",
+      "religion": "Islam",
+      "language": "Indonesian",
+      "maritial_status": "Married",
+      "mother_name": "Jane Doe",
+      "address": {
+        "address_uuid": null,
+        "prov": "Jawa Timur",
+        "city": "Jakarta Selatan",
+        "district": "Pancoran",
+        "rt": "01",
+        "rw": "02",
+        "full_address": "Jl. Raya No. 123",
+        "country": "Indonesia",
+        "village": "Kampung",
+        "postal_code": "12345"
+      }
+    },
+    "payment_method": "ASURANSI",
+    "maternity": false,
+    "platform": "ADMISI",
+    "complaint": "Flu and fever",
+    "note": "No additional notes",
+    "jadwal_dokter_uuid": "0191c056-f9f7-7beb-a116-ca60bf4a5422",
+    "assurance_account_id": "2ed6a3cb-94aa-47f6-bca1-a99ae568e1e1"
+  };
 
-  // The following section contains configuration options for execution of this
-  // test script in Grafana Cloud.
-  //
-  // See https://grafana.com/docs/grafana-cloud/k6/get-started/run-cloud-tests-from-the-cli/
-  // to learn about authoring and running k6 test scripts in Grafana k6 Cloud.
-  //
-  // cloud: {
-  //   // The ID of the project to which the test is assigned in the k6 Cloud UI.
-  //   // By default tests are executed in default project.
-  //   projectID: "",
-  //   // The name of the test in the k6 Cloud UI.
-  //   // Test runs with the same name will be grouped.
-  //   name: "PostRegist.js"
-  // },
+  const postRajalResponse = http.post(url, JSON.stringify(body), {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${ACCESS_TOKEN}`
+    }
+  });
 
-  // Uncomment this section to enable the use of Browser API in your tests.
-  //
-  // See https://grafana.com/docs/k6/latest/using-k6-browser/running-browser-tests/ to learn more
-  // about using Browser API in your test scripts.
-  //
-  // scenarios: {
-  //   // The scenario name appears in the result summary, tags, and so on.
-  //   // You can give the scenario any name, as long as each name in the script is unique.
-  //   ui: {
-  //     // Executor is a mandatory parameter for browser-based tests.
-  //     // Shared iterations in this case tells k6 to reuse VUs to execute iterations.
-  //     //
-  //     // See https://grafana.com/docs/k6/latest/using-k6/scenarios/executors/ for other executor types.
-  //     executor: 'shared-iterations',
-  //     options: {
-  //       browser: {
-  //         // This is a mandatory parameter that instructs k6 to launch and
-  //         // connect to a chromium-based browser, and use it to run UI-based
-  //         // tests.
-  //         type: 'chromium',
-  //       },
-  //     },
-  //   },
-  // }
-};
+  console.log(postRajalResponse.body);
 
-// The function that defines VU logic.
-//
-// See https://grafana.com/docs/k6/latest/examples/get-started-with-k6/ to learn more
-// about authoring k6 scripts.
-//
-export default function() {
-  http.get('https://test.k6.io');
-  sleep(1);
+  check(postRajalResponse, {
+    'is status 201': (r) => r.status === 201,
+    'response time is less than 500ms': (r) => r.timings.duration < 500,
+    'response time is less than 1s': (r) => r.timings.duration < 1000,
+    'response time is less than 2s': (r) => r.timings.duration < 2000,
+    'response time is less than 5s': (r) => r.timings.duration < 5000,
+    'response time is less than 10s': (r) => r.timings.duration < 10000,
+    'content-type is json': (r) => r.headers['Content-Type'] === 'application/json'
+  });
 }

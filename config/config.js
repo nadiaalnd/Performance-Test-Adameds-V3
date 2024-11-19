@@ -1,1 +1,12 @@
-export const BASE_URL = 'https://api-gateway.adameds.id';
+export const BASE_URL = 'https://gateway.adameds.id/api';
+export const START_DATE = '1730757018';
+export const END_DATE = '1730759671';
+export const HOST_ADMISI_PP = 'http://admisi-belum-tidur.devlabs.my.id/api';
+export const HOST_ADMISI = 'http://18.142.73.75:8083/api';
+export const HOST_PELAYANAN = 'http://example.com';
+export const HOST_RANAP = 'http://example.com';
+export const HOST_USER = 'http://18.142.73.75:8081/v3/user';
+export const HOST_ROLE = 'http://192.168.1.142:8081/api/v3/datamster/role';
+export const HOST_SETTING = 'http://18.142.73.75:8082/api/v3';
+export const ACCESS_TOKEN = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImtoYWJpYkBnbWFpbC5jb20iLCJmYXNrZXNVdWlkIjoiMDE5MzNlNDYtYWZjZS03NGEwLTgwOGMtNjEzZGJlYjQ5ODVmIiwiaWF0IjoxNzMxOTk5Mzk3LCJleHAiOjE3MzIwMTAxOTcsImlzcyI6ImF1dGhlbnRpY2F0aW9uLXNlcml2aWNlIn0.tv9CPIdaKL9B_hk9OhM2UT40THpBVDpeCahrNrNcctleDFnpOtt11i_Rz9g8ShQNm3v7OMugLftnlI47xsZaOPpokp0dRvHdcZI1_qSJombwZEemf0gpjJxhvIEwu_Qu-mTLP4VKv5yJhooxi9GPah04vjyMEmH-joHpy6fZGcAPcmTM6puXOCWDrVq9avAnpuXJ_iaQ-1HFCCXae8nfF7GhP-Ewx65K7-ac4p6N8T4hqPAqKX14YIkLpP6VcAlPSdH5GnmGgaoGEGboVEn8ptB36PjJWVDoJd7-1809V_P7TZ19vKzP_91iAnn86TlZ4mnQ1FLDQvBMgYOWfrlzKQ';
+export const ACCESS_TOKEN_PP = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlVXVpZCI6IjAxOTI5Mzc1LTg5MzQtNzllNi1iNTc2LWI3Nzc3OTAwYTIyNyIsInVzZXJuYW1lIjoiYWxsaWFuby1kZXYiLCJmYXNrZXNVdWlkIjoiOWQ0MDN1ZmpoNDN1ZmgzdWY4NDMwaWhmIiwibmFtZSI6ImFsbGlhbm8iLCJpYXQiOjE3MjkwNTA5MjksImV4cCI6MTczNzY5MDkyOSwiaXNzIjoiYXV0aGVudGljYXRpb24tc2VyaXZpY2UifQ.opmy0ugOdt0WKFY_sRmEtIeVWuJj94F5X9BuCOcwzpjbqStjAs6BD_eEiMSU-nsXs-ht7Kk-sUd338_MLQeP_pmP0KIn7sTzuCwceM7VnxtnrX9eVfJKMohTcRr61xnOwIcW0zFPMGwO0uhS2Q75gqSSE2Q87go51TznjAQMaSsxnqhk23CT1xJ9ZejDUCC0G6oKLUm6E_ScdRve3Qw3ebo8vm7pAKgmd_5VVNvmOkjTR-uQhmz_kFD5RFhN5ZZjI9hjmkT90ilgFr-tLWD5GZxoxkjRHKcNoyI9UcEnXQRM8C_Sx8xohFaKQIk-DJMRl_PS6mpDjRELXymv-UJ5Jw';
