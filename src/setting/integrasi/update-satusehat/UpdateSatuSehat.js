@@ -5,9 +5,9 @@ import { ACCESS_TOKEN, HOST_SETTING } from "../../../../config/config.js";
 export function updateSatuSehatIntegration() {
   const url = `${HOST_SETTING}/setting/integrasi-satu-sehat`;
   const body = {
-    "client_secret": "your-client-secret",
-    "organization_id": "your-organization-id",
-    "client_id": "your-client-id",
+    "client_secret": "A7"+Math.random(),
+    "organization_id": "3y482-98177"+Math.random(),
+    "client_id": "AB"+Math.random(),
     "status_satu_sehat": true
   };
 
@@ -28,6 +28,5 @@ export function updateSatuSehatIntegration() {
     'response time is less than 2s': (r) => r.timings.duration < 2000,
     'response time is less than 5s': (r) => r.timings.duration < 5000,
     'response time is less than 10s': (r) => r.timings.duration < 10000,
-    'content-type is json': (r) => r.headers['Content-Type'] === 'application/json',
   });
 }

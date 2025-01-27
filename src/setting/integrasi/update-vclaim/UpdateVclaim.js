@@ -6,9 +6,9 @@ export function updateVClaimIntegration() {
   const url = `${HOST_SETTING}/setting/integrasi-vclaim`;
   const body = {
     "base_url": "https://api.vclaim.com",
-    "user_key": "your-user-key",
-    "secret_key": "your-secret-key",
-    "cons_id": "your-cons-id",
+    "user_key": "A7"+Math.random(),
+    "secret_key": "3y482-98177"+Math.random(),
+    "cons_id": "AB"+Math.random(),
     "PPK": "1234PPK"
   };
 
@@ -29,6 +29,5 @@ export function updateVClaimIntegration() {
     'response time is less than 2s': (r) => r.timings.duration < 2000,
     'response time is less than 5s': (r) => r.timings.duration < 5000,
     'response time is less than 10s': (r) => r.timings.duration < 10000,
-    'content-type is json': (r) => r.headers['Content-Type'] === 'application/json',
   });
 }

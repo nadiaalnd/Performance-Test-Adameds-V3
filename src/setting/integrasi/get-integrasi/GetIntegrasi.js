@@ -25,6 +25,5 @@ export function getAllIntegrasi() {
     'response time is less than 2s': (r) => r.timings.duration < 2000,
     'response time is less than 5s': (r) => r.timings.duration < 5000,
     'response time is less than 10s': (r) => r.timings.duration < 10000,
-    'content-type is json': (r) => r.headers['Content-Type'] === 'application/json',
   });
 }

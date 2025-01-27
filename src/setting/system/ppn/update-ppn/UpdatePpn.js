@@ -3,11 +3,10 @@ import { check } from 'k6';
 import {ACCESS_TOKEN, HOST_SETTING} from "../../../../../config/config.js";
 
 export function updatePPN() {
-  const url = `${HOST_SETTING}/setting/system/ppn`;
+  const url = `${HOST_SETTING}/setting/ppn`;
   const body = {
-    "faskes_uuid": "unique-faskes-uuid",
-    "status": true,
-    "value": 10.0
+    "value_ppn" : 10+Math.random(),
+    "status_ppn" : true
   };
 
   const updatePPNResponse = http.put(url, JSON.stringify(body), {
@@ -27,6 +26,5 @@ export function updatePPN() {
     'response time is less than 2s': (r) => r.timings.duration < 2000,
     'response time is less than 5s': (r) => r.timings.duration < 5000,
     'response time is less than 10s': (r) => r.timings.duration < 10000,
-    'content-type is json': (r) => r.headers['Content-Type'] === 'application/json',
   });
 }

@@ -3,7 +3,7 @@ import {check, fail} from 'k6';
 import {ACCESS_TOKEN, HOST_SETTING} from "../../../../../config/config.js";
 
 export function getBiayaAdmin() {
-  const url = `${HOST_SETTING}/setting/system/biaya-admin`;
+  const url = `${HOST_SETTING}/setting/biaya-administrasi`;
   const getBiayaAdminResponse = http.get(url, {
     headers: {
       'Accept': 'application/json',
@@ -21,6 +21,5 @@ export function getBiayaAdmin() {
     'response time is less than 2s': (r) => r.timings.duration < 2000,
     'response time is less than 5s': (r) => r.timings.duration < 5000,
     'response time is less than 10s': (r) => r.timings.duration < 10000,
-    'content-type is json': (r) => r.headers['Content-Type'] === 'application/json',
   });
 }

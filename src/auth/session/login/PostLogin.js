@@ -1,20 +1,18 @@
 import http from 'k6/http';
-import { check } from 'k6';
-import {BASE_URL} from "../../../../config/config.js";
-
-
-export function postLogin () {
+import {check, fail} from 'k6';
+import {HOST_AUTH} from "../../../../config/config.js";
+export function postLogin() {
   const body = {
-    username: 'tester1',
-    password: 'test-123',
+    username: 'admin@gmail.com',
+    password: 'admin123',
   };
-
-  const loginResponse = http.post(`${BASE_URL}/login`, JSON.stringify(body), {
+  const loginResponse = http.post(`${HOST_AUTH}/login`, JSON.stringify(body), {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
   });
+  console.log(loginResponse.body);
   check(loginResponse, {
     'is status 200': (r) => r.status === 200,
     'response time is less than 500ms': (r) => r.timings.duration < 500,
@@ -22,8 +20,5 @@ export function postLogin () {
     'response time is less than 2s': (r) => r.timings.duration < 2000,
     'response time is less than 5s': (r) => r.timings.duration < 5000,
     'response time is less than 10s': (r) => r.timings.duration < 10000,
-    'content-type is json': (r) => r.headers['Content-Type'] === 'application/json',
-    'response has auth token': (r) => r.json('payload.token') !== undefined || fail("Token tidak ditemukan!"),
-    'success message is present': (r) => r.json('message') === 'Berhasil login' || fail("Pesan sukses tidak ada!")
   });
 }

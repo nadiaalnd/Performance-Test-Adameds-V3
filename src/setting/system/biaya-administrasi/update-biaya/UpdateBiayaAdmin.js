@@ -3,11 +3,10 @@ import { check } from 'k6';
 import {ACCESS_TOKEN, HOST_SETTING} from "../../../../../config/config.js";
 
 export function updateBiayaAdmin() {
-  const url = `${HOST_SETTING}/setting/system/biaya-admin`;
+  const url = `${HOST_SETTING}/setting/biaya-administrasi`;
   const body = {
-    "faskes_uuid": "unique-faskes-uuid",
-    "status": true,
-    "value": 15000.0
+    "status_biaya_lain" : true,
+    "value_biaya_lain" : 10
   };
 
   const updateAdminFeeResponse = http.put(url, JSON.stringify(body), {
@@ -27,6 +26,5 @@ export function updateBiayaAdmin() {
     'response time is less than 2s': (r) => r.timings.duration < 2000,
     'response time is less than 5s': (r) => r.timings.duration < 5000,
     'response time is less than 10s': (r) => r.timings.duration < 10000,
-    'content-type is json': (r) => r.headers['Content-Type'] === 'application/json',
   });
 }

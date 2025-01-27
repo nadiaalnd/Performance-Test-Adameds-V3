@@ -3,12 +3,12 @@ import {check, fail} from 'k6';
 import {ACCESS_TOKEN, ACCESS_TOKEN_PP, BASE_URL, HOST_SETTING} from "../../../../config/config.js";
 
 export function updateProfileFaskes() {
-  const url = `${HOST_SETTING}/setting/profile-faskes`;
+  const url = `${HOST_SETTING}/setting/profil-faskes`;
   const body = {
     "code": "FSKS01"+Math.random(),
     "name": "Faskes Utama",
     "phone": "08123456789",
-    "address_uuid": "01933ed0-1723-784e-a25e-42040a6cdc64",
+    "address_uuid": "0193447a-9a77-7b9d-8cc0-5923d3028010",
     "full_address": "Jl. Jend. Sudirman No. 1",
     "prov": "DKI Jakarta",
     "city": "Jakarta Pusat",

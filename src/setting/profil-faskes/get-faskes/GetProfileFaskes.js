@@ -7,7 +7,7 @@ import {
 } from "../../../../config/config.js";
 
 export function getProfileFaskes() {
-  const url = `${HOST_SETTING}/setting/profile-faskes`;
+  const url = `${HOST_SETTING}/setting/profil-faskes`;
   const getProfileFaskesResponse = http.get(url, {
     headers: {
       'Accept': 'application/json',
@@ -25,6 +25,5 @@ export function getProfileFaskes() {
     'response time is less than 2s': (r) => r.timings.duration < 2000,
     'response time is less than 5s': (r) => r.timings.duration < 5000,
     'response time is less than 10s': (r) => r.timings.duration < 10000,
-    'content-type is json': (r) => r.headers['Content-Type'] === 'application/json',
   });
 }

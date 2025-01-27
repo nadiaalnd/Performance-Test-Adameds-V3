@@ -1,5 +1,5 @@
-import { sleep } from 'k6';
-import { postLogin } from './PostLogin.js';
+import { sleep } from "k6";
+import {postLoginAndLogout} from "./PostLogout.js";
 
 export const options = {
   stages: [
@@ -16,6 +16,6 @@ export const options = {
 };
 
 export default function() {
-  postLogin();
-  sleep(1);
+  postLoginAndLogout();
+  sleep(10);
 }

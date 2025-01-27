@@ -7,7 +7,7 @@ export function updateProfileAcc() {
   const body = {
     "uuid": "unique-user-uuid",
     "faskes_uuid": "unique-faskes-uuid",
-    "role_uuid": "unique-role-uuid",
+    "role_uuid": "unique-token-uuid",
     "practitioner_uuid": "unique-practitioner-uuid",
     "phone": "08123456789",
     "email": "user@example.com",
